@@ -1,0 +1,21 @@
+.login-button{
+    margin-top:20px;
+    margin:0 auto;
+}
+
+.title{
+    font-style: normal;
+    color:rgba(12, 126, 219, 0.767);
+    font-weight: 1.4em;
+    text-align: center
+}
+
+.registration-title{
+    margin:0 atuo;
+    color:black;
+    font-size: 2em
+}
+
+.reg{
+    text-decoration: none;
+}
