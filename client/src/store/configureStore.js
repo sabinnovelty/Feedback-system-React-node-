@@ -5,14 +5,23 @@ import thunk from 'redux-thunk';
 
 
 
-// const middlewares=[thunk]
+const middlewares=[thunk]
 
-export default ()=>{
+// export default ()=>{
+//     const store=createStore(
+//         rootReducer
+//         ,applyMiddleware(...middlewares),
+//          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//     );
+
+//     return store;
+// }
+
+
     const store=createStore(
         rootReducer
-        ,applyMiddleware(thunk),
+        ,applyMiddleware(...middlewares),
          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
-    return store;
-}
+export default store;

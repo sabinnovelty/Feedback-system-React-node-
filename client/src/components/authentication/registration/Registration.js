@@ -3,18 +3,21 @@ import './Registration.css';
 import StudentModel from './../../../model/Student';
 import {Field, reduxForm} from 'redux-form';
 // import HandleRegistration from './HandleRegistration';
-import {createStudent} from './../../../actions/createStudent';
+import {createStudent,actionTest,getData} from './../../../actions/createStudent';
 import { renderUsername,renderPassword,renderCpassword,renderEmail,
     renderBatch,renderYear,renderSemester,renderPart} from './RenderField';
 import { registrationValidate } from './ValidationForm'
-import {Button, Form,FormGroup,Label, Input,FormText,Row,Col,Container,FormFeedback} from 'reactstrap'
+import {Button, Form,FormGroup,Label, Input,FormText,Row,Col,Container,FormFeedback} from 'reactstrap';
+import { connect } from 'react-redux';
+
 const Registration = props => {
 
     const {handleSubmit,dispatch} = props;
     
     const onHandleSubmit=(values)=>{
-            console.log(values);
-            dispatch(createStudent(values));
+            console.log(values,props,"props");
+            props.dispatch(getData(values))
+            // props.dispatch(createStudent(values));
 
     }
 
@@ -81,11 +84,14 @@ const Registration = props => {
         </Container>
     )
 }
+const  mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        getData:getData
+    }
+}
 
+const RegistrationForm=reduxForm ({ form: 'RegistrationForm', validate: registrationValidate })(Registration);
 
-export default reduxForm
-    ({
-        form: 'RegistrationForm', validate: registrationValidate
-    })
-    (Registration)
+const connectRegisterPage=connect(null,mapDispatchToProps)(RegistrationForm);
 
+export { connectRegisterPage as default };
